@@ -1,6 +1,8 @@
 
 plugins {
     id("org.springframework.boot") version "2.6.3"
+    id 'jacoco'
+    id "org.sonarqube" version "3.4.0.2513"
 
 }
 
@@ -79,4 +81,15 @@ bootWar.enabled(false)
 
 war{
     archiveName("project.war")
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+    reports{
+        xml.enabled(true)
+    }
 }

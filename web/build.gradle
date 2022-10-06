@@ -1,0 +1,15 @@
+plugins {
+
+
+}
+
+
+dependencies {
+    implementation project(":service")
+    implementation project(":security")
+
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.7.4'
+
+}
+

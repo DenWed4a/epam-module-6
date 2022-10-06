@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(":service")
+    implementation project(":core")
+
+
+}
+test {
+    useJUnitPlatform()
+}

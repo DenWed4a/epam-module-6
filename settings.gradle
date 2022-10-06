@@ -1,0 +1,6 @@
+rootProject.name = 'module-3-project'
+include 'web'
+include 'service'
+include 'core'
+include 'security'
+

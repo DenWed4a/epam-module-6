@@ -1,0 +1,13 @@
+
+
+dependencies {
+    implementation project(":core")
+
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}

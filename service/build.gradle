@@ -1,8 +1,23 @@
-
+plugins{
+    id 'jacoco'
+}
 
 dependencies {
     implementation project(":core")
+    implementation 'org.springframework.boot:spring-boot-starter:2.7.0'
 
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.2.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.2'
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.0'
+    //testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.5.1'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.22.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+
+    implementation 'org.springframework.security:spring-security-crypto:5.7.1'
 
 
 
@@ -10,4 +25,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports{
+        xml.enabled(true)
+
+    }
 }

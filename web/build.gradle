@@ -1,15 +1,27 @@
-plugins {
-
-
+plugins{
+    id("org.springframework.boot") version "2.6.3"
+    id 'jacoco-report-aggregation'
+    id 'jacoco'
+    id 'war'
 }
 
 
 dependencies {
     implementation project(":service")
     implementation project(":security")
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.7.0'
 
-
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.7.4'
-
+    implementation 'org.springframework.security:spring-security-core:5.7.1'
+    implementation 'org.springframework.security:spring-security-config:5.7.1'
+    implementation 'org.springframework.security:spring-security-web:5.7.1'
 }
 
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+tasks.named('check') {
+    dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
+}
